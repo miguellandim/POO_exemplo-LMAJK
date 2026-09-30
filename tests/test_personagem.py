@@ -9,8 +9,11 @@ def test_guerreiro_esta_vivo():
 
 
 def test_personagem_recebe_dano():
-    # TODO
-    pass
+    guerreiro = Guerreiro("Arthur")
+
+    guerreiro.receber_dano(20)
+
+    assert guerreiro.vida == 115
 
 
 def test_personagem_morre():
