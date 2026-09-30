@@ -28,3 +28,12 @@ class InimigoEspecial(Inimigo):
     pass
 
 
+class ChefeFinal(InimigoEspecial):
+
+    def __init__(self, nome, vida, ataque, defesa, habilidade_especial):
+        super().__init__(nome, vida, ataque, defesa, habilidade_especial)
+
+    def atacar(self, alvo):
+        print(f"{self.nome} está atacando {alvo.nome} com um ataque devastador! ")
+        alvo.receber_dano(self.ataque * 3)
+
