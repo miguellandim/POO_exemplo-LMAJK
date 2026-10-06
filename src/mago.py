@@ -18,7 +18,11 @@ class Mago(Personagem):
     
 
     def usar_magia(self, alvo):
-        # TODO: implementar magia
+        print(f"{self.nome} lança uma magia em {alvo.nome}!")
+        self.mana -= 20
+        alvo.receber_dano(self.ataque * 1.5)
+        
+        pass
 
         if self.mana <= 0:
             print("O mago não possui mana suficiente.")
