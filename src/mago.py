@@ -13,8 +13,9 @@ class Mago(Personagem):
         self.mana = 100
 
     def atacar(self, alvo):
-        # TODO: implementar ataque normal
-        pass
+        print("O",self.nome,"lançou deu um ataque comum em", alvo.nome)
+        alvo.receber_dano(self.ataque)
+    
 
     def usar_magia(self, alvo):
         custo_mana = 20

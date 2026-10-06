@@ -5,7 +5,7 @@ from mago import Mago
 from arqueiro import Arqueiro
 from item import Item, PocaoDeVida
 
-def main():
+
 
     jogador = Guerreiro("GUTIN O DOMINADOR DE GOBLINS")
 
