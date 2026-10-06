@@ -37,3 +37,14 @@ class ChefeFinal(InimigoEspecial):
         print(f"{self.nome} está atacando {alvo.nome} com um ataque devastador! ")
         alvo.receber_dano(self.ataque * 3)
 
+
+class CondicaoVitoria:
+
+    def condicao_vitoria(inimigo):
+        if inimigo.vida <= 0:
+            print("Vitória! O inimigo foi derrotado!")
+            return True
+
+        return False
+        
+
