@@ -28,8 +28,19 @@ class Batalha:
                 pass
 
             elif opcao == "2":
-                # TODO: implementar item
-                pass
+                if not self.jogador.inventario:
+                    print("Você não tem itens.")
+                    continue
+
+                print("\n--- ITENS ---")
+                for i, item in enumerate(self.jogador.inventario, start=1):
+                    print(f"{i} - {item.nome}")
+
+                escolha = input("Escolha um item: ")
+
+                if not escolha.isdigit() or not self.jogador.usar_item(int(escolha) - 1):
+                    print("Item inválido.")
+                    continue
 
             elif opcao == "3":
                 print("Você fugiu da batalha!")
