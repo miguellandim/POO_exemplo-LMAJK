@@ -42,3 +42,10 @@ class Batalha:
             # TODO: inimigo deve atacar depois do jogador
 
         # TODO: verificar quem venceu
+        def turno_inimigo(self):
+        if not self.inimigo.esta_vivo():
+            return
+
+        print("\n--- TURNO DO INIMIGO ---")
+        self.inimigo.atacar(self.jogador)
+        
