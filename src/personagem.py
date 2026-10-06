@@ -14,8 +14,14 @@ class Personagem(ABC):
         return self.vida > 0
 
     def receber_dano(self, dano):
-        # TODO: calcular o dano considerando a defesa
-        pass
+        if dano < 0:
+            raise ValueError("O dano não pode ser negativo.")
+
+        dano_real = max(1, int(dano - self.defesa))
+        self.vida = max(0, self.vida - dano_real)
+
+        print(f"{self.nome} recebeu {dano_real} de dano!")
+        return dano_real
 
     def adicionar_item(self, item):
         """Guarda um item no inventário do personagem."""
