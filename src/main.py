@@ -120,3 +120,86 @@ def main():
 if __name__ == "__main__":
     main()
     
+from guerreiro import Guerreiro
+from inimigo import Inimigo
+from batalha import Batalha
+
+
+def testar_ataque_guerreiro():
+    guerreiro = Guerreiro("Arthur")
+    inimigo = Inimigo("Goblin", vida=50, ataque=10, defesa=5)
+
+    guerreiro.atacar(inimigo)
+
+    # ataque 20 - defesa 5 = 15 de dano
+    assert inimigo.vida == 35
+    print("OK - ataque do guerreiro")
+
+
+def testar_turno_inimigo():
+    guerreiro = Guerreiro("Arthur")
+    inimigo = Inimigo("Goblin", vida=50, ataque=25, defesa=5)
+    batalha = Batalha(guerreiro, inimigo)
+
+    batalha.turno_inimigo()
+
+    # ataque 25 - defesa 15 = 10 de dano
+    assert guerreiro.vida == 110
+    print("OK - turno do inimigo")
+
+
+def testar_inimigo_morto_nao_ataca():
+    guerreiro = Guerreiro("Arthur")
+    inimigo = Inimigo("Goblin", vida=0, ataque=25, defesa=5)
+    batalha = Batalha(guerreiro, inimigo)
+
+    batalha.turno_inimigo()
+
+    assert guerreiro.vida == 120
+    print("OK - inimigo morto nao ataca")
+
+
+def testar_dano_nao_fica_negativo():
+    guerreiro = Guerreiro("Arthur")
+    inimigo = Inimigo("Formiga", vida=10, ataque=1, defesa=0)
+    batalha = Batalha(guerreiro, inimigo)
+
+    batalha.turno_inimigo()
+
+    # ataque 1 < defesa 15: não causa dano
+    assert guerreiro.vida == 120
+    print("OK - dano minimo zero")
+
+
+def testar_morte_do_inimigo():
+    guerreiro = Guerreiro("Arthur")
+    inimigo = Inimigo("Goblin", vida=10, ataque=10, defesa=0)
+
+    guerreiro.atacar(inimigo)
+
+    assert inimigo.vida == 0
+    assert inimigo.esta_vivo() is False
+    print("OK - morte do inimigo")
+
+
+def testar_jogador_morre():
+    guerreiro = Guerreiro("Arthur")
+    guerreiro.vida = 5
+    inimigo = Inimigo("Dragao", vida=200, ataque=100, defesa=50)
+    batalha = Batalha(guerreiro, inimigo)
+
+    batalha.turno_inimigo()
+
+    assert guerreiro.vida == 0
+    assert guerreiro.esta_vivo() is False
+    print("OK - jogador morre")
+
+
+if __name__ == "__main__":
+    testar_ataque_guerreiro()
+    testar_turno_inimigo()
+    testar_inimigo_morto_nao_ataca()
+    testar_dano_nao_fica_negativo()
+    testar_morte_do_inimigo()
+    testar_jogador_morre()
+    print("\nTodos os testes passaram!")
