@@ -1,5 +1,6 @@
 from src.guerreiro import Guerreiro
-
+from src.inimigo import Inimigo
+import pytest
 
 def test_personagem_recebe_dano():
     guerreiro = Guerreiro("Arthur")  # vida 120, defesa 15
