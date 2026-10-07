@@ -1,4 +1,4 @@
-from personagem import Personagem
+from .personagem import Personagem
 
 class Mago(Personagem):
 
@@ -13,7 +13,7 @@ class Mago(Personagem):
         self.mana = 100
 
     def atacar(self, alvo):
-        print("O",self.nome,"lançou deu um ataque comum em", alvo.nome)
+        print("O",self.nome,"lançou um ataque comum em", alvo.nome)
         alvo.receber_dano(self.ataque)
     
 
